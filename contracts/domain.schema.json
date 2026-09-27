@@ -8,7 +8,9 @@
     "sample_id",
     "actors",
     "facts",
-    "constraints"
+    "constraints",
+    "engagements",
+    "evidence_inventory"
   ],
   "properties": {
     "domain": {
@@ -43,7 +45,268 @@
       "items": {
         "type": "string"
       }
+    },
+    "engagements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/engagement"
+      }
+    },
+    "evidence_inventory": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      }
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "$defs": {
+    "engagement": {
+      "type": "object",
+      "required": [
+        "engagement_id",
+        "company",
+        "country_code",
+        "scenario_category",
+        "stage",
+        "product_profile",
+        "milestones",
+        "exceptions",
+        "blocking",
+        "commercial"
+      ],
+      "properties": {
+        "engagement_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "company": {
+          "type": "string",
+          "minLength": 1
+        },
+        "country_code": {
+          "type": "string",
+          "enum": ["SG", "MY", "TH", "ID", "PH", "VN", "BN", "KH", "LA", "MM"]
+        },
+        "scenario_category": {
+          "type": "string",
+          "enum": ["跨境商贸", "智慧城治", "医疗健康", "智能制造", "数字金融", "绿色低碳"]
+        },
+        "stage": {
+          "type": "string",
+          "enum": ["intent", "due_diligence", "pilot_agreed", "piloting", "acceptance", "contracted", "lapsed"]
+        },
+        "product_profile": {
+          "type": "object",
+          "required": ["capabilities", "applicable_scenarios"],
+          "properties": {
+            "capabilities": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            "applicable_scenarios": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        },
+        "partner": {
+          "type": "object",
+          "required": ["name", "due_diligence", "responsibilities"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "role": { "type": "string" },
+            "due_diligence": {
+              "type": "object",
+              "required": ["status"],
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "enum": ["pending", "passed", "passed_with_conditions", "failed"]
+                },
+                "completed_on": { "type": "string" },
+                "summary": { "type": "string" }
+              },
+              "additionalProperties": false
+            },
+            "responsibilities": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": ["item", "confirmed"],
+                "properties": {
+                  "item": { "type": "string", "minLength": 1 },
+                  "confirmed": { "type": "boolean" }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "pilot_agreement": {
+          "type": "object",
+          "required": ["signed_on", "pilot_site", "scope", "acceptance_criteria"],
+          "properties": {
+            "signed_on": { "type": "string", "minLength": 1 },
+            "pilot_site": { "type": "string", "minLength": 1 },
+            "scope": { "type": "string", "minLength": 1 },
+            "acceptance_criteria": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        },
+        "data_usage": {
+          "type": "object",
+          "required": ["license_basis", "permitted_purposes", "restrictions"],
+          "properties": {
+            "license_basis": { "type": "string", "minLength": 1 },
+            "permitted_purposes": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string" }
+            },
+            "restrictions": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "cross_border_transfer": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "localization": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "regulatory_prerequisites": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "item", "status"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "item": { "type": "string", "minLength": 1 },
+              "status": {
+                "type": "string",
+                "enum": ["pending", "resolved"]
+              },
+              "evidence_ref": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "code", "name", "reached_on", "evidence_refs"],
+            "properties": {
+              "id": { "type": "string", "minLength": 1 },
+              "code": {
+                "type": "string",
+                "enum": [
+                  "intent_recorded",
+                  "partner_diligence_done",
+                  "pilot_agreement_signed",
+                  "pilot_launched",
+                  "pilot_interim_report",
+                  "acceptance_passed",
+                  "contract_signed"
+                ]
+              },
+              "name": { "type": "string", "minLength": 1 },
+              "reached_on": { "type": "string", "minLength": 1 },
+              "evidence_refs": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "exceptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["type", "date", "reason"],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "partner_replaced",
+                  "scope_reduced",
+                  "pilot_suspended",
+                  "acceptance_disputed",
+                  "intent_lapsed"
+                ]
+              },
+              "date": { "type": "string", "minLength": 1 },
+              "reason": { "type": "string", "minLength": 1 },
+              "details": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "blocking": {
+          "type": ["object", "null"],
+          "required": ["type", "since", "note"],
+          "properties": {
+            "type": {
+              "type": "string",
+              "enum": ["market_access", "followup_gap"]
+            },
+            "since": { "type": "string", "minLength": 1 },
+            "prerequisite_ids": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "note": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "commercial": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": ["none", "opportunity", "negotiating", "contracted"]
+            },
+            "contract_ref": { "type": "string" },
+            "signed_on": { "type": "string" },
+            "contract_value_band": { "type": "string" }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["evidence_id", "title", "kind", "owner_engagement_id", "authorization"],
+      "properties": {
+        "evidence_id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "minLength": 1 },
+        "owner_engagement_id": { "type": "string", "minLength": 1 },
+        "authorization": {
+          "type": "string",
+          "enum": ["granted", "restricted", "not_shared"]
+        },
+        "shared_with": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "note": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  }
 }

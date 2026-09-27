@@ -1,6 +1,6 @@
 {
   "domain": "ai-overseas-milestones",
-  "version": 1,
+  "version": 2,
   "sample_id": "record-017",
   "actors": [
     "人工智能企业",
@@ -11,12 +11,296 @@
   "facts": [
     "榜单按六类应用场景遴选企业",
     "活动帮助企业对接多个东盟国家商业代表",
-    "现场形成多项初步合作意向并建议优先考察部分市场"
+    "现场形成多项初步合作意向并建议优先考察部分市场",
+    "新加坡、马来西亚、泰国在数据许可、本地伙伴、试点场地与验收口径上要求各不相同",
+    "同一企业可就同一产品在多个国家并行推进，但试点成果按国家分别归属",
+    "榜单名次与现场握手只证明意向，不证明项目落地"
   ],
   "constraints": [
-    "企业能力档案",
-    "境外伙伴尽调",
-    "试点里程碑",
-    "意向转化核对"
+    "按企业与目标国家建档：产品能力、适用场景、合作方尽调、试点协议、数据使用范围、本地化事项、监管前置条件、里程碑证据、商业转化九类事项逐项记录",
+    "试点成果归属唯一：同一试点证据不得被多个企业或多个国家档案重复申报",
+    "合作方更换、范围缩减、试点暂停、验收争议、意向失效五类异常必须记录发生日期与原因",
+    "阻塞须区分市场准入受阻（挂起未决监管前置条件）与单纯没有跟进",
+    "企业只分享授权状态为已授权或受限授权的进度材料，未授权材料不得进入里程碑证据",
+    "进入试点前合作方尽调须通过，且伙伴逐项确认自身责任",
+    "验收里程碑通过后才可登记正式合同，意向失效档案须保留失效原因"
+  ],
+  "engagements": [
+    {
+      "engagement_id": "E-KH-SG",
+      "company": "瞰海智慧（杭州）有限公司",
+      "country_code": "SG",
+      "scenario_category": "智慧城治",
+      "stage": "contracted",
+      "product_profile": {
+        "capabilities": ["AI视频交通事件识别", "多语种政务问答", "城市运行看板生成"],
+        "applicable_scenarios": ["路口交通事件自动发现与派单", "市民咨询热线智能分流"]
+      },
+      "partner": {
+        "name": "StarVision Systems Pte Ltd（化名）",
+        "role": "本地系统集成与运维商",
+        "due_diligence": {
+          "status": "passed",
+          "completed_on": "2026-03-18",
+          "summary": "证照、财务与涉诉记录核查无重大异常，具备政务集成项目经验"
+        },
+        "responsibilities": [
+          { "item": "本地机房部署与7×24运维", "confirmed": true },
+          { "item": "市镇理事会接口人与现场协调", "confirmed": true },
+          { "item": "PDPA合规义务共同履行", "confirmed": true }
+        ]
+      },
+      "pilot_agreement": {
+        "signed_on": "2026-04-02",
+        "pilot_site": "新加坡西部某市镇理事会辖区（脱敏）",
+        "scope": "60个路口交通事件识别试点，周期12周",
+        "acceptance_criteria": [
+          "事件识别召回率不低于90%，每路口每日误报不超过5条",
+          "系统月度可用率不低于99%",
+          "验收报告经企业、伙伴与市镇理事会三方签署"
+        ]
+      },
+      "data_usage": {
+        "license_basis": "市镇理事会数据使用授权函，适用新加坡PDPA",
+        "permitted_purposes": ["试点期模型效果验证", "事件工单自动生成"],
+        "restrictions": ["道路视频不得用于训练通用模型", "数据不出新加坡境", "试点结束后30日内删除原始视频"],
+        "cross_border_transfer": "不涉及，全部数据本地处理"
+      },
+      "localization": [
+        "英文与简体中文双语界面",
+        "新加坡式英语、马来语地名与路名词表",
+        "本地时区与公共假期日历适配"
+      ],
+      "regulatory_prerequisites": [
+        { "id": "SG-R1", "item": "PDPA个人数据保护义务评估与DPO接洽", "status": "resolved", "evidence_ref": "EVD-SG-PDPA" }
+      ],
+      "milestones": [
+        { "id": "M-KHSG-1", "code": "intent_recorded", "name": "对接会合作意向登记", "reached_on": "2026-02-11", "evidence_refs": ["EVD-EVENT-001"] },
+        { "id": "M-KHSG-2", "code": "partner_diligence_done", "name": "本地伙伴尽调通过", "reached_on": "2026-03-18", "evidence_refs": ["EVD-KHSG-DD"] },
+        { "id": "M-KHSG-3", "code": "pilot_agreement_signed", "name": "试点协议签署", "reached_on": "2026-04-02", "evidence_refs": ["EVD-KHSG-PA"] },
+        { "id": "M-KHSG-4", "code": "pilot_launched", "name": "路口试点上线", "reached_on": "2026-04-15", "evidence_refs": ["EVD-KHSG-LAUNCH"] },
+        { "id": "M-KHSG-5", "code": "pilot_interim_report", "name": "试点中期报告", "reached_on": "2026-06-01", "evidence_refs": ["EVD-KHSG-INTERIM"] },
+        { "id": "M-KHSG-6", "code": "acceptance_passed", "name": "三方验收通过", "reached_on": "2026-07-20", "evidence_refs": ["EVD-KHSG-ACC"] },
+        { "id": "M-KHSG-7", "code": "contract_signed", "name": "正式服务合同签署", "reached_on": "2026-08-12", "evidence_refs": ["EVD-KHSG-CONTRACT"] }
+      ],
+      "exceptions": [],
+      "blocking": null,
+      "commercial": {
+        "status": "contracted",
+        "contract_ref": "CTR-2026-SG-008",
+        "signed_on": "2026-08-12",
+        "contract_value_band": "年服务费约SGD 30万至60万"
+      }
+    },
+    {
+      "engagement_id": "E-KH-TH",
+      "company": "瞰海智慧（杭州）有限公司",
+      "country_code": "TH",
+      "scenario_category": "智慧城治",
+      "stage": "piloting",
+      "product_profile": {
+        "capabilities": ["AI视频积水与垃圾识别", "泰文告警短信生成"],
+        "applicable_scenarios": ["河道与低洼路段积水预警", "市容垃圾事件发现"]
+      },
+      "partner": {
+        "name": "Bangkok City Tech（化名）",
+        "role": "本地机房与政务关系伙伴",
+        "due_diligence": {
+          "status": "passed_with_conditions",
+          "completed_on": "2026-03-30",
+          "summary": "主体资质通过，条件为须在首次数据出境前完成PDPA跨境备案"
+        },
+        "responsibilities": [
+          { "item": "本地机房与网络环境协调", "confirmed": true },
+          { "item": "泰文告警模板与现场翻译", "confirmed": true },
+          { "item": "PDPA跨境备案共同申请", "confirmed": true }
+        ]
+      },
+      "pilot_agreement": {
+        "signed_on": "2026-04-20",
+        "pilot_site": "曼谷某区智慧城市试点办公室辖区（脱敏）",
+        "scope": "河道积水与垃圾识别试点，原计划8周",
+        "acceptance_criteria": [
+          "积水事件发现提前量不少于20分钟",
+          "误报率不超过8%",
+          "泰文告警送达率不低于95%"
+        ]
+      },
+      "data_usage": {
+        "license_basis": "伙伴数据使用协议，待泰国PDPA跨境传输备案完成后生效跨境条款",
+        "permitted_purposes": ["积水事件识别效果验证"],
+        "restrictions": ["备案受理前原始视频仅在本地机房处理", "不得向境外传输任何可识别画面"],
+        "cross_border_transfer": "泰国PDPA跨境传输备案待批，当前不传输"
+      },
+      "localization": ["泰文界面与告警话术", "泰国佛历日期与本地雨情数据源"],
+      "regulatory_prerequisites": [
+        { "id": "TH-R1", "item": "泰国PDPA跨境传输备案", "status": "pending" }
+      ],
+      "milestones": [
+        { "id": "M-KHTH-1", "code": "intent_recorded", "name": "对接会合作意向登记", "reached_on": "2026-02-12", "evidence_refs": ["EVD-EVENT-001"] },
+        { "id": "M-KHTH-2", "code": "partner_diligence_done", "name": "伙伴尽调附条件通过", "reached_on": "2026-03-30", "evidence_refs": ["EVD-KHTH-DD"] },
+        { "id": "M-KHTH-3", "code": "pilot_agreement_signed", "name": "试点协议签署", "reached_on": "2026-04-20", "evidence_refs": ["EVD-KHTH-PA"] },
+        { "id": "M-KHTH-4", "code": "pilot_launched", "name": "本地机房空跑与小范围上线", "reached_on": "2026-05-08", "evidence_refs": ["EVD-KHTH-LAUNCH"] }
+      ],
+      "exceptions": [
+        {
+          "type": "pilot_suspended",
+          "date": "2026-06-10",
+          "reason": "泰国PDPA跨境传输备案尚未获批，现场脱敏网关交付延期，无法按原计划采集现场视频",
+          "details": "双方书面同意暂停现场数据采集，保留模型本地空跑；备案受理后10个工作日内恢复，暂停期不计入试点周期"
+        }
+      ],
+      "blocking": {
+        "type": "market_access",
+        "since": "2026-06-10",
+        "prerequisite_ids": ["TH-R1"],
+        "note": "属市场准入问题未决而非没有跟进：企业与伙伴每两周同步一次备案进度，主办方已转介市场准入顾问"
+      },
+      "commercial": { "status": "opportunity" }
+    },
+    {
+      "engagement_id": "E-QH-MY",
+      "company": "岐黄智医科技有限公司",
+      "country_code": "MY",
+      "scenario_category": "医疗健康",
+      "stage": "acceptance",
+      "product_profile": {
+        "capabilities": ["多语种智能分诊问答", "导诊路径推荐"],
+        "applicable_scenarios": ["私立医院门诊智能分诊", "院内导诊与科室推荐"]
+      },
+      "partner": {
+        "name": "MediConnect Sdn Bhd（化名）",
+        "role": "本地医疗渠道与注册申报伙伴",
+        "due_diligence": {
+          "status": "passed_with_conditions",
+          "completed_on": "2026-04-05",
+          "summary": "医疗渠道资源充分，条件为正式商用前须完成医疗器械局注册，试点限沙箱医院内"
+        },
+        "responsibilities": [
+          { "item": "医疗器械局注册与沙箱备案申报配合", "confirmed": true },
+          { "item": "试点医院场地与伦理委员会协调", "confirmed": true },
+          { "item": "马来语医患话术校对", "confirmed": true }
+        ]
+      },
+      "pilot_agreement": {
+        "signed_on": "2026-04-18",
+        "pilot_site": "吉隆坡某私立医院门诊区（脱敏）",
+        "scope": "智能分诊与导诊试点8周（缩减后范围，不含病历文本辅助）",
+        "acceptance_criteria": [
+          "分诊建议与值班护士判断一致率不低于88%",
+          "患者平均候诊指引满意度不低于4.2/5",
+          "无数据安全事件"
+        ]
+      },
+      "data_usage": {
+        "license_basis": "医院伦理批件加匿名化日志使用协议",
+        "permitted_purposes": ["分诊问答准确性验证", "导诊流程效率评估"],
+        "restrictions": ["仅使用匿名化交互日志", "不得接触可识别病历", "数据不得出境"],
+        "cross_border_transfer": "禁止"
+      },
+      "localization": ["英文、马来文、简体中文三语", "本地科室命名与医保目录映射"],
+      "regulatory_prerequisites": [
+        { "id": "MY-R1", "item": "医疗器械局沙箱试点备案", "status": "resolved", "evidence_ref": "EVD-MY-SANDBOX" },
+        { "id": "MY-R2", "item": "医疗器械局正式注册（商用前提）", "status": "pending" }
+      ],
+      "milestones": [
+        { "id": "M-QHMY-1", "code": "intent_recorded", "name": "对接会合作意向登记", "reached_on": "2026-02-11", "evidence_refs": ["EVD-EVENT-001"] },
+        { "id": "M-QHMY-2", "code": "partner_diligence_done", "name": "更换后伙伴尽调附条件通过", "reached_on": "2026-04-05", "evidence_refs": ["EVD-QHMY-DD2"] },
+        { "id": "M-QHMY-3", "code": "pilot_agreement_signed", "name": "试点协议签署", "reached_on": "2026-04-18", "evidence_refs": ["EVD-QHMY-PA"] },
+        { "id": "M-QHMY-4", "code": "pilot_launched", "name": "门诊分诊试点上线", "reached_on": "2026-05-06", "evidence_refs": ["EVD-QHMY-LAUNCH"] },
+        { "id": "M-QHMY-5", "code": "pilot_interim_report", "name": "试点中期报告", "reached_on": "2026-06-18", "evidence_refs": ["EVD-QHMY-INTERIM"] }
+      ],
+      "exceptions": [
+        {
+          "type": "partner_replaced",
+          "date": "2026-03-28",
+          "reason": "首家候选合作方尽调未通过：缺少医疗器械合规经营资质且有未结涉诉记录",
+          "details": "终止与首家候选方的排他接触，经院方推荐更换为MediConnect，尽调与对接顺延约四周"
+        },
+        {
+          "type": "scope_reduced",
+          "date": "2026-05-30",
+          "reason": "院方未授权出院病历文本用于模型验证，原病历辅助范围无合法数据来源",
+          "details": "试点范围缩减为门诊分诊导诊，数据使用范围与验收口径同步修订，企业与伙伴书面确认"
+        },
+        {
+          "type": "acceptance_disputed",
+          "date": "2026-07-22",
+          "reason": "验收口径争议：协议附件按分诊准确率验收，院方要求改为分诊加导诊综合满意度，且对抽样窗口未达成一致",
+          "details": "三方同意引入市场准入顾问推荐的独立复核人，按修订后口径回溯抽样，试点不暂停"
+        }
+      ],
+      "blocking": {
+        "type": "market_access",
+        "since": "2026-07-01",
+        "prerequisite_ids": ["MY-R2"],
+        "note": "医疗器械局正式注册未决，即使验收通过也不能直接商用；验收争议另案处理中"
+      },
+      "commercial": { "status": "negotiating" }
+    },
+    {
+      "engagement_id": "E-SL-TH",
+      "company": "商流云图科技有限公司",
+      "country_code": "TH",
+      "scenario_category": "跨境商贸",
+      "stage": "intent",
+      "product_profile": {
+        "capabilities": ["多语种商品文案生成", "跨境选品需求预测"],
+        "applicable_scenarios": ["泰国本地电商店铺上架提效", "热带家居品类选品"]
+      },
+      "milestones": [
+        { "id": "M-SLTH-1", "code": "intent_recorded", "name": "对接会合作意向登记", "reached_on": "2026-02-12", "evidence_refs": ["EVD-EVENT-001"] }
+      ],
+      "exceptions": [],
+      "blocking": {
+        "type": "followup_gap",
+        "since": "2026-03-15",
+        "note": "单纯没有跟进：对接会后企业未再约见客商，三封跟进邮件无回复；当前无任何在办监管或许可事项"
+      },
+      "commercial": { "status": "none" }
+    },
+    {
+      "engagement_id": "E-SL-SG",
+      "company": "商流云图科技有限公司",
+      "country_code": "SG",
+      "scenario_category": "跨境商贸",
+      "stage": "lapsed",
+      "product_profile": {
+        "capabilities": ["多语种商品文案生成", "跨境合规标签校验"],
+        "applicable_scenarios": ["新加坡跨境电商集运平台的商品信息治理"]
+      },
+      "milestones": [
+        { "id": "M-SLSG-1", "code": "intent_recorded", "name": "对接会合作意向登记", "reached_on": "2026-02-11", "evidence_refs": ["EVD-EVENT-001"] }
+      ],
+      "exceptions": [
+        {
+          "type": "intent_lapsed",
+          "date": "2026-05-06",
+          "reason": "客商新财年预算冻结，书面回复6个月内无立项计划；双方同意意向失效，保留下一年度重启可能",
+          "details": "企业未投入尽调与试点成本，档案不登记任何试点成果"
+        }
+      ],
+      "blocking": null,
+      "commercial": { "status": "none" }
+    }
+  ],
+  "evidence_inventory": [
+    { "evidence_id": "EVD-EVENT-001", "title": "场景对接会合作意向登记表（脱敏汇总）", "kind": "活动记录", "owner_engagement_id": "E-KH-SG", "authorization": "granted", "shared_with": ["主办方", "全部登记企业", "受邀客商"], "note": "活动层级证据，可被各档案的意向登记里程碑引用；不是任何一方的试点成果" },
+    { "evidence_id": "EVD-KHSG-DD", "title": "StarVision尽调备忘录", "kind": "尽调记录", "owner_engagement_id": "E-KH-SG", "authorization": "granted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-SG-PDPA", "title": "PDPA数据保护义务评估与DPO接洽函", "kind": "监管材料", "owner_engagement_id": "E-KH-SG", "authorization": "granted", "shared_with": ["主办方", "市镇理事会（化名）"] },
+    { "evidence_id": "EVD-KHSG-PA", "title": "新加坡试点协议签署版", "kind": "协议", "owner_engagement_id": "E-KH-SG", "authorization": "granted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-KHSG-LAUNCH", "title": "新加坡试点启动纪要", "kind": "里程碑记录", "owner_engagement_id": "E-KH-SG", "authorization": "granted", "shared_with": ["主办方", "StarVision Systems Pte Ltd"] },
+    { "evidence_id": "EVD-KHSG-INTERIM", "title": "新加坡试点中期报告（指标脱敏）", "kind": "试点成果", "owner_engagement_id": "E-KH-SG", "authorization": "restricted", "shared_with": ["主办方", "StarVision Systems Pte Ltd", "市镇理事会（化名）"] },
+    { "evidence_id": "EVD-KHSG-ACC", "title": "新加坡三方验收报告签署版", "kind": "验收材料", "owner_engagement_id": "E-KH-SG", "authorization": "granted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-KHSG-CONTRACT", "title": "正式服务合同首页（金额遮蔽）", "kind": "合同", "owner_engagement_id": "E-KH-SG", "authorization": "restricted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-KHTH-DD", "title": "Bangkok City Tech尽调备忘（含附条件说明）", "kind": "尽调记录", "owner_engagement_id": "E-KH-TH", "authorization": "granted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-KHTH-PA", "title": "泰国试点协议签署版", "kind": "协议", "owner_engagement_id": "E-KH-TH", "authorization": "granted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-KHTH-LAUNCH", "title": "曼谷试点部署记录与启动照片（脱敏）", "kind": "里程碑记录", "owner_engagement_id": "E-KH-TH", "authorization": "restricted", "shared_with": ["主办方", "Bangkok City Tech"] },
+    { "evidence_id": "EVD-QHMY-DD2", "title": "MediConnect尽调备忘录", "kind": "尽调记录", "owner_engagement_id": "E-QH-MY", "authorization": "granted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-MY-SANDBOX", "title": "马来西亚医疗器械局沙箱备案回执", "kind": "监管材料", "owner_engagement_id": "E-QH-MY", "authorization": "granted", "shared_with": ["主办方", "试点医院（化名）"] },
+    { "evidence_id": "EVD-QHMY-PA", "title": "马来西亚试点协议签署版（含范围修订页）", "kind": "协议", "owner_engagement_id": "E-QH-MY", "authorization": "granted", "shared_with": ["主办方"] },
+    { "evidence_id": "EVD-QHMY-LAUNCH", "title": "门诊分诊试点上线记录", "kind": "里程碑记录", "owner_engagement_id": "E-QH-MY", "authorization": "granted", "shared_with": ["主办方", "MediConnect Sdn Bhd"] },
+    { "evidence_id": "EVD-QHMY-INTERIM", "title": "马来西亚分诊试点中期报告（脱敏）", "kind": "试点成果", "owner_engagement_id": "E-QH-MY", "authorization": "restricted", "shared_with": ["主办方", "MediConnect Sdn Bhd", "试点医院（化名）"] },
+    { "evidence_id": "EVD-QHMY-RAW", "title": "门诊原始交互日志（未脱敏）", "kind": "原始数据", "owner_engagement_id": "E-QH-MY", "authorization": "not_shared", "note": "企业与院方约定永不进入共享材料包，仅供医院内部审计；任何里程碑不得引用" }
   ]
 }
